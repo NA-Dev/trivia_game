@@ -116,7 +116,7 @@ game = {
             game.timer.time = game.timer.maxTime;
             var converted = game.timer.timeConverter(game.timer.time);
             $('#time').text(converted);
-            if (!clockRunning) {
+            if (!game.clockRunning) {
                 game.clockRunning = true;
                 intervalId = setInterval(game.timer.count, 1000);
             }
