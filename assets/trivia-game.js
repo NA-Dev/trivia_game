@@ -6,7 +6,7 @@ $(document).ready(function() {
 
 
 game = {
-    clockRunning: false;
+    clockRunning: false,
     round: 0,
     score: 0,
 
