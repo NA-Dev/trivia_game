@@ -12,16 +12,81 @@ game = {
 
     questions: [
         {
-            question: 'What is this?',
-            options: ['Gold','Paperweight','Trash'],
-            answer: 0,
-            image: 0,
+            question: 'At which one of these games has AI not yet learned to best a human player?',
+            options: ['Go', 'Chess', 'StarCraft', 'Jeopardy', 'Atari games', 'Poker'],
+            answer: 2,
+            image: 'q0.jpg',
+            link: 'https://www.technologyreview.com/s/609242/humans-are-still-better-than-ai-at-starcraftfor-now/',
         },
         {
-            question: 'What are we doing?',
-            options: ['Trying','Succeeding','Failing'],
+            question: 'Google\'s PageRank algorithm determines the relevance of a website by measuring how interconnected it is to other sites on the web.<br><br>Which is the most recent application of the PageRank algorithm?',
+            options: ['predicting ecosystem collapse', 'ranking best athletes', 'debugging', 'de-ranking fake news', 'predicting traffic flow'],
+            answer: 3,
+            image: 'q1.jpg',
+            link: 'https://www.bloomberg.com/news/articles/2017-04-25/google-rewrites-its-powerful-search-rankings-to-bury-fake-news',
+        },
+        {
+            question: 'If "reddit.com" is using Hypertext Transfer Protocol Secure (HTTPS) on all of its pages, which of the following can your ISP, third-parties, or network sniffers access?',
+            options: ['that I visited reddit', 'my posts', 'my password', 'that I visited r/dogs'],
+            answer: 0,
+            image: 'q2.jpg',
+            link: 'https://medium.com/mozilla-internet-citizen/how-does-https-protect-you-and-how-doesnt-it-6c785884a130',
+        },
+        {
+            question: 'Cookies are text files stored on your hard drive to store login info, to save shopping carts, or to create targeted ads. They cannot execute viruses, and only the site that created the cookie can access it.<br><br>What company invented cookies, Javascript, and SSL encryption?',
+            options: ['Google', 'Mozilla', 'Facebook', 'Netscape', 'Microsoft'],
+            answer: 3,
+            image: 'q3.jpg',
+            link: 'http://blog.kameleoon.com/en/types-web-cookies/',
+        },
+        {
+            question: 'Which of these cannot be recognized using Google\'s Cloud Vision API, which uses algorithms to determine the content of an uploaded image?',
+            options: ['faces and emotions',  'species of plants', 'text and language', 'nudity and violence', 'geographic landmarks'],
             answer: 1,
-            image: 0,
+            image: 'q4.jpg',
+            link: 'https://techcrunch.com/2016/02/18/google-opens-its-cloud-vision-api-to-all-developers/',
+        },
+        {
+            question: 'Which of these quantites is the largest according to current estimates?',
+            options: ['diameter of our galaxy in meters', 'amount of data on the internet in bytes', 'litres of water in Earth\'s oceans'],
+            answer: 1,
+            image: 'q5.jpg',
+            link: 'https://www.lifewire.com/how-big-is-the-web-4065573',
+        },
+        {
+            question: 'The world\'s largest data center currently in operation is located in which country?',
+            options: ['Russia', 'United States', 'India', 'China'],
+            answer: 3,
+            image: 'q6.jpg',
+            link: 'https://www.racksolutions.com/news/data-center-news/top-10-largest-data-centers-world/',
+        },
+        {
+            question: 'Which company\'s database houses the largest volume of data in one unique database?',
+            options: ['AT&T', 'US Governement', 'Google', 'Facebook'],
+            answer: 0,
+            image: 'q7.jpg',
+            link: 'https://www.waterfordtechnologies.com/big-data-interesting-facts/',
+        },
+        {
+            question: 'Apache maintains an open source processor for very large data sets called Hadoop.<br><br>From what did Hadoop get its name and elephant logo?',
+            options: ['a circus animal', 'a tribal story', 'a toy', 'a book'],
+            answer: 2,
+            image: 'q8.jpg',
+            link: 'https://www.sas.com/en_us/insights/big-data/hadoop.html',
+        },
+        {
+            question: 'What percentage of S&P 500 companies\' market value comes from intangible assets, including data and software?',
+            options: ['22%', '57%', '84%', '91%'],
+            answer: 2,
+            image: 'q9.jpg',
+            link: 'http://files.technologyreview.com/whitepapers/MIT_Oracle+Report-The_Rise_of_Data_Capital.pdf?_ga=2.18019193.1751378999.1511739668-1844887473.1511623668',
+        },
+        {
+            question: 'The Turing test was devised to test whether humans can distinguish between an AI program and another human. Turing bet that the test would be passed by the year 2000.<br><br>In what year was the Turing test passed?',
+            options: ['1998', '2000', '2014', '2017', 'not yet passed'],
+            answer: 2,
+            image: 'q10.jpg',
+            link: 'http://time.com/2847900/eugene-goostman-turing-test/',
         },
     ],
 
@@ -38,6 +103,8 @@ game = {
             $('#score').html(game.score + ' / ' + game.round);
             $('#questionTitle').html('Question #' + game.round);
             $('#question').html(game.questions[game.round-1].question);
+            $('#link').html('<img src="assets/images/' + game.questions[game.round-1].image + '">');
+            $('#link').attr('href', game.questions[game.round-1].link);
             $('#answerTitle').html('Answer Choices:');
             $('#answer').empty();
             $.each(game.questions[game.round-1].options, function(i, val) {
@@ -92,14 +159,18 @@ game = {
 
     timeout: function() {
         $('#question').html('Time expired!');
-        $('answer').html('Time expired!');
-        setTimeout(game.newRound, 5000)
+        $('#btn-' + game.questions[game.round - 1].answer).animate({
+            backgroundColor: "#80ff80"
+        }, 1000);
+
+        setTimeout(game.newRound, 7000);
     },
 
     end: function () {
         $('#time').html('00:00');
         $('#answer').empty();
         $('#questionTitle').html('Game Over');
+        $('#link').empty();
         $('#question').empty();
         $('#answerTitle').empty();
         $('#play').html('Play Again?');
@@ -164,299 +235,3 @@ game = {
         },
     },
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// function charGen() {
-//     //populate each index of 'chars' with info about the character
-//     $.each(names, function(i) {
-//         chars[i] = {
-//             index: i,
-//             id: 'char' + i,
-//             name: names[i],
-//             image: images[i],
-//             maxHealth: maxHealths[i],
-//             health: maxHealths[i],
-//             initAttackPower: initAttackPowers[i],
-//             attackPower: initAttackPowers[i],
-//             counterPower: counterPowers[i],
-//         };
-
-
-//         //create a div to hold character image and name
-//         $('#arena').append(
-//             '<div id="char' + i + '" class="img" onClick="clicked(this.id);">'
-//                 + '<img src="assets/images/chars/' + chars[i].image + '">'
-//                 + '<div>' + chars[i].name + '</div><div>' + chars[i].health
-//                 + ' hp</div><div>' + chars[i].attackPower
-//                 + ' attack</div></div>'
-//         );
-//     });
-// }
-
-// //lets JS know whether a clicked character is ally or foe
-// function clicked(iD) {
-//     if (allyReady == true) {
-//         allyIndex = iD.substr(-1);
-//         chooseAlly();
-//     }
-
-//     else if (foeReady == true) {
-//         foeIndex = iD.substr(-1);
-//         chooseFoe();
-//     }
-// }
-
-// function chooseAlly() {
-//     allyReady = false;
-
-//     //create div for ally character image
-//     $('#ally').html(
-//     '<div class="img">'
-//         + '<img src="assets/images/chars/' + chars[allyIndex].image + '">'
-//         + '<div>' + chars[allyIndex].name + '</div>'
-//         + '</div>'
-//     );
-
-//     //populate title with character's max health
-//     $('#allyTitle').text(
-//     'Ally  -  ' + chars[allyIndex].maxHealth + ' HP max'
-//     );
-
-//     //remove character from arena
-//     $('#char' + allyIndex).remove();
-
-//     //unhide panel containing ally info and image
-//     $('#allyBox').css('display', 'block');
-
-//     chooseFoeReady();
-// }
-
-
-// function chooseFoeReady() {
-//     //start a new round
-//     round++;
-
-//     //choose foe on click of character image
-//     $('#message').html('Round ' + round + ': Who will your Ally fight?');
-//     foeReady = true;
-// }
-
-
-// function chooseFoe() {
-//     foeReady = false;
-
-//     //create div for foe character image
-//     $('#foe').html(
-//     '<div class="img">'
-//         + '<img src="assets/images/chars/' + chars[foeIndex].image + '">'
-//         + '<div>' + chars[foeIndex].name + '</div>'
-//         + '</div>'
-//     );
-
-//     //populate title with character's max health
-//     $('#foeTitle').text(
-//     'Foe  -  ' + chars[foeIndex].maxHealth + ' HP max'
-//     );
-
-//     //remove character from arena
-//     $('#char' + foeIndex).remove();
-
-//     //unhide panel containing ally info and image
-//     $('#foeBox').css('display', 'block');
-
-//     refreshHP();
-//     startGame();
-// }
-
-// function refreshHP() {
-//     //get ally remaining health in percent and update hp bar
-//     var percent = (chars[allyIndex].health / chars[allyIndex].maxHealth)*100
-//         + '%';
-//     $('#allyHP').css('width', percent);
-
-
-//     //get foe remaining health in percent and update hp bar
-//     percent = (chars[foeIndex].health / chars[foeIndex].maxHealth)*100 + '%';
-//     $('#foeHP').css('width', percent);
-// }
-
-// function startGame() {
-//     //enable attack button
-//     $('#attack button').prop("disabled", false);
-
-//     //alert user to attack or quit
-//     $('#message').text(chars[allyIndex].name  + ' can attack '
-//         + chars[foeIndex].name
-//         + ' or run away.');
-// }
-
-// function attack() {
-//     //disable attack button
-//     $('#attack button').prop("disabled", true);
-
-//     //temp variable to hold original attack power / damage done
-//     var damage = chars[allyIndex].attackPower;
-
-//     //takes health from foe
-//     chars[foeIndex].health = chars[foeIndex].health
-//         - damage;
-//     //increases ally attack power
-//     chars[allyIndex].attackPower = damage
-//         + chars[allyIndex].initAttackPower;
-
-//     //alert user of damage done
-//     $('#message').text(chars[allyIndex].name  + ' attacked for '
-//         + damage + ' damage.');
-
-//     refreshHP();
-
-//     //counter attack
-//     counter();
-// }
-
-// function counter() {
-//     //temp variable to hold original attack power / damage done
-//     var damage = chars[foeIndex].attackPower;
-
-//     //takes health from foe
-//     chars[allyIndex].health = chars[allyIndex].health
-//         - damage;
-
-//     //no increase in foe attack power
-
-//     //alert user of damage done
-//     $('#message').append('<br>' + chars[foeIndex].name  + ' countered for '
-//         + damage + ' damage.');
-
-//     refreshHP();
-
-//     //check for a winner
-//     checkWin();
-// }
-
-// function checkWin() {
-//     //if ally and foe health are both depleted...
-//     if (chars[allyIndex].health < 1 && chars[foeIndex].health < 1) {
-
-//         //display negative healths as zero
-//         chars[foeIndex].health = chars[allyIndex].health = 0;
-
-//         //the game is a draw
-//         draw();
-//     }
-
-//     //if ally health depleted...
-//     else if (chars[allyIndex].health < 1) {
-
-//         //display negative health as zero
-//         chars[foeIndex].health = 0;
-
-//         //ally is defeated
-//         defeat();
-//     }
-
-//     //if foe health is depleted...
-//     else if (chars[foeIndex].health < 1) {
-//         //display negative health as zero
-//         chars[foeIndex].health = 0;
-
-//         refreshHP();
-
-//         //check if a new one can be found
-//         newFoe();
-//     }
-
-//     //otherwise, enable attack button for next attack
-//     else {
-//     $('#attack button').prop("disabled", false);
-//     }
-// }
-
-// function newFoe () {
-//     //replace defeated foe image with sewer cap
-//     $('#foe').html(
-//         '<div class="img"><img src="assets/images/sewer.png"></div>'
-//     );
-
-//     //show 'Defeated' in foe title
-//     $('#foeTitle').text('Foe - Defeated');
-
-//     //if all characters are not defeated...
-//     if (round < chars.length - 1) {
-//         //choose another foe
-//         chooseFoeReady();
-//     }
-
-//     //otherwise, user wins
-//     else {
-//         victory();
-//     };
-// }
-
-// function draw() {
-//     //update text
-//     $('#restart button').text('Try Again');
-//     $('#message').html(
-//         'Your powers were evenly matched. Train harder next time.'
-//     );
-//     $('#allyTitle').text('Ally - Draw');
-//     $('#foeTitle').text('Foe - Draw');
-// }
-
-// function defeat () {
-//     //replace defeated ally image with sewer cap, and update text
-//     $('#ally').html(
-//             '<div class="img"><img src="assets/images/sewer.png"></div>'
-//         );
-//     $('#restart button').text('Try Again');
-//     $('#message').html('Your Ally was defeated. Train harder next time.');
-//     $('#allyTitle').text('Ally - Defeated');
-//     $('#foeTitle').text('Foe - Victorious');
-// }
-
-
-
-// function victory() {
-//     //update text
-//     $('#restart button').text('Play Again');
-//     $('#message').html('KOWABUNGA! Your Ally fought well and won.');
-//     $('#allyTitle').text('Ally - Winner');
-//     $('#foeTitle').text('Foe - Victorious');
-// }
-
-

@@ -15,18 +15,18 @@
 
       <!-- Custom Style Sheet -->
       <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+      <!-- Google Fonts -->
+      <link href="https://fonts.googleapis.com/css?family=Electrolize|Lato" rel="stylesheet">
   </head>
 
 <body>
     <div class="container">
 
       <header>
-        <div id="header-title">
-          <img id="header-img" src="assets/images/favicon-32x32.png" alt="placeholder+image">
-          <h2>
-            Web Development Trivia
-          </h2>
-        </div>
+        <h2>
+          Computing and Internet Trivia
+        </h2>
         <nav>
           <ul>
             <li>
@@ -46,17 +46,19 @@
             </li>
           </ul>
         </nav>
-        <div id="search">
-          <input type="search" placeholder="search the site...">
-        </div>
       </header>
 
       <div class="questionDiv">
-        <h3 id="questionTitle"></h3>
-        <hr>
-        <button id="play">Start Game</button>
+        <h2 id="questionTitle">Instructions:</h2>
         <p id="question">
+          Try to answer each question before the timer runs out.
+          <br><br>
+          Click the image below each question for more info.
         </p>
+        <button id="play">
+          Start Game
+        </button>
+        <a id="link" target="_blank"></a>
       </div>
 
       <div class="answerDiv">
@@ -67,15 +69,24 @@
       </div>
 
       <div class="timerDiv">
-        <h4>Timer:</h4>
-        <hr>
-        <p id="time">00:00</p>
+        <p>
+          Timer:
+        </p>
+        <h3 id="time">
+          00:00
+        </h3>
+
       </div>
 
       <div class="scoreDiv">
-        <h4>Score:</h4>
-        <hr>
-        <p id="score">0 / 0</p>
+        <p>
+          Score:
+        </p>
+        <h3 id="score">
+          0 / 0
+        </h3>
+
+
       </div>
 
       <footer>
